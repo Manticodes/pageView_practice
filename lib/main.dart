@@ -49,7 +49,7 @@ class _ArticlePageState extends State<ArticlePage>
     });
   }
 
-  final List<String> describtion = ['asdad', 'ghfhfhg'];
+  final List<String> describtion = ['asd3424ad', 'ghfhfhg'];
   late final TabController _dotcontroller;
   int dotindex = 0;
   void initState() {
