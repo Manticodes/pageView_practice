@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pageview_tabcontrolselector/slidepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -76,12 +77,11 @@ class _ArticlePageState extends State<ArticlePage>
                   onPageChanged: changeDot,
                   itemCount: describtion.length,
                   controller: _controller,
-                  itemBuilder: (ctx, intex) {
-                    return Text(describtion[intex]);
-                    /* SlidePageWidget(
-                      describtion: describtion[intex],
-                      image: describtion[intex],
-                    ); */
+                  itemBuilder: (ctx, index) {
+                    return SlidePageWidget(
+                      describtion: describtion[index],
+                      image: describtion[index],
+                    );
                   }),
             ),
           ),
