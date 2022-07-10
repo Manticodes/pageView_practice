@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pageview_tabcontrolselector/articledatamodel.dart';
 import 'package:pageview_tabcontrolselector/slidepage.dart';
 
 void main() {
@@ -50,6 +51,10 @@ class _ArticlePageState extends State<ArticlePage>
   }
 
   final List<String> describtion = ['asd3424ad', 'ghfhfhg'];
+  final List<String> image = [
+    'assets/image/top-p2e-games-march.jpg',
+    'assets/image/fdfdfd.jpg'
+  ];
   late final TabController _dotcontroller;
   int dotindex = 0;
   void initState() {
@@ -64,7 +69,23 @@ class _ArticlePageState extends State<ArticlePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('test')),
+      bottomNavigationBar: BottomAppBar(
+          child: Container(
+        child: Center(
+          child: TabPageSelector(
+            selectedColor: Colors.amber.shade400,
+            controller: _dotcontroller,
+          ),
+        ),
+        height: 50,
+        color: Color.fromARGB(255, 43, 43, 43),
+      )),
+      backgroundColor: Color.fromARGB(255, 43, 43, 43),
+      appBar: AppBar(
+        title: Text('هفت روش برای درآمد بیشتر '),
+        centerTitle: true,
+        backgroundColor: Color.fromARGB(255, 43, 43, 43),
+      ),
       body: Column(
         children: [
           Container(
@@ -79,19 +100,14 @@ class _ArticlePageState extends State<ArticlePage>
                   controller: _controller,
                   itemBuilder: (ctx, index) {
                     return SlidePageWidget(
-                      describtion: describtion[index],
-                      image: describtion[index],
+                      describtion: articleData[index].text,
+                      image: articleData[index].image,
+                      title: articleData[index].title,
+                      starnote: articleData[index].starnote,
                     );
                   }),
             ),
           ),
-          Container(
-            color: Colors.red,
-            height: 100,
-            child: TabPageSelector(
-              controller: _dotcontroller,
-            ),
-          )
         ],
       ),
     );
