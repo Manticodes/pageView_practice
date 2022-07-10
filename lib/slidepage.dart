@@ -91,7 +91,7 @@ class SlidePageWidget extends StatelessWidget {
                               textAlign: TextAlign.center),
                         ),
                         decoration: BoxDecoration(
-                            color: Color.fromARGB(186, 255, 193, 7),
+                            color: Color.fromARGB(185, 243, 198, 65),
                             borderRadius: BorderRadius.circular(8)),
                       ),
                     )
