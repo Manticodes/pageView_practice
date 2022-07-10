@@ -24,47 +24,76 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: ArticlePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class ArticlePage extends StatefulWidget {
+  ArticlePage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<ArticlePage> createState() => _ArticlePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ArticlePageState extends State<ArticlePage>
+    with SingleTickerProviderStateMixin {
+  PageController _controller = PageController(
+    initialPage: 0,
+  );
+  void changeDot(int x) {
+    setState(() {
+      dotindex = x.toInt();
+      _dotcontroller.animateTo(dotindex);
+    });
+  }
+
+  final List<String> describtion = ['asdad', 'ghfhfhg'];
+  late final TabController _dotcontroller;
+  int dotindex = 0;
+  void initState() {
+    super.initState();
+    _dotcontroller = TabController(
+      length: describtion.length,
+      initialIndex: dotindex,
+      vsync: this,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title),
-        ),
-        body: const Center(
-            child: Text(
-                'hjhuhkjhkji')) // This trailing comma makes auto-formatting nicer for build methods.
-        );
+      appBar: AppBar(title: Text('test')),
+      body: Column(
+        children: [
+          Container(
+            child: Expanded(
+              child: PageView.builder(
+                  scrollBehavior: ScrollBehavior(
+                      androidOverscrollIndicator:
+                          AndroidOverscrollIndicator.stretch),
+                  // allowImplicitScrolling: true,
+                  onPageChanged: changeDot,
+                  itemCount: describtion.length,
+                  controller: _controller,
+                  itemBuilder: (ctx, intex) {
+                    return Text(describtion[intex]);
+                    /* SlidePageWidget(
+                      describtion: describtion[intex],
+                      image: describtion[intex],
+                    ); */
+                  }),
+            ),
+          ),
+          Container(
+            color: Colors.red,
+            height: 100,
+            child: TabPageSelector(
+              controller: _dotcontroller,
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
