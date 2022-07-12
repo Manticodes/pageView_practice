@@ -50,17 +50,12 @@ class _ArticlePageState extends State<ArticlePage>
     });
   }
 
-  final List<String> describtion = ['asd3424ad', 'ghfhfhg'];
-  final List<String> image = [
-    'assets/image/top-p2e-games-march.jpg',
-    'assets/image/fdfdfd.jpg'
-  ];
   late final TabController _dotcontroller;
   int dotindex = 0;
   void initState() {
     super.initState();
     _dotcontroller = TabController(
-      length: describtion.length,
+      length: articleData.length,
       initialIndex: dotindex,
       vsync: this,
     );
@@ -70,35 +65,33 @@ class _ArticlePageState extends State<ArticlePage>
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
+          color: Color.fromARGB(255, 39, 39, 39),
           child: Container(
-        child: Center(
-          child: TabPageSelector(
-            selectedColor: Colors.amber.shade400,
-            controller: _dotcontroller,
-          ),
-        ),
-        height: 50,
-        color: Color.fromARGB(255, 43, 43, 43),
-      )),
-      backgroundColor: Color.fromARGB(255, 43, 43, 43),
+            child: Center(
+              child: TabPageSelector(
+                selectedColor: Color.fromARGB(255, 142, 183, 65),
+                controller: _dotcontroller,
+              ),
+            ),
+            height: 50,
+            color: Color.fromARGB(255, 39, 39, 39),
+          )),
+      backgroundColor: Color.fromARGB(255, 39, 39, 39),
       appBar: AppBar(
         title: Text('هفت روش برای درآمد بیشتر '),
         centerTitle: true,
         elevation: 0,
-        actions: [Icon(Icons.add_circle)],
-        backgroundColor: Color.fromARGB(255, 43, 43, 43),
+        backgroundColor: Color.fromARGB(255, 39, 39, 39),
       ),
       body: Column(
         children: [
           Container(
             child: Expanded(
               child: PageView.builder(
-                  scrollBehavior: ScrollBehavior(
-                      androidOverscrollIndicator:
-                          AndroidOverscrollIndicator.stretch),
+
                   // allowImplicitScrolling: true,
                   onPageChanged: changeDot,
-                  itemCount: describtion.length,
+                  itemCount: articleData.length,
                   controller: _controller,
                   itemBuilder: (ctx, index) {
                     return SlidePageWidget(
