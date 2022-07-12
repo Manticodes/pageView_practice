@@ -16,6 +16,7 @@ class SlidePageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 36, 34, 36),
         body: SingleChildScrollView(
@@ -26,8 +27,8 @@ class SlidePageWidget extends StatelessWidget {
                       alignment: Alignment.bottomCenter,
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 240,
+                          width: _width,
+                          height: _width / 1.5,
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(image.toString()),
@@ -62,7 +63,7 @@ class SlidePageWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(describtion,
                         style: TextStyle(
-                            color: Color.fromARGB(255, 216, 216, 216),
+                            color: Colors.white.withOpacity(.45),
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             height: 1.5),
@@ -77,22 +78,33 @@ class SlidePageWidget extends StatelessWidget {
               starnote != null
                   ? Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Container(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(starnote.toString(),
-                              softWrap: true,
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 216, 216, 216),
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  height: 1.5),
-                              textDirection: TextDirection.rtl,
-                              textAlign: TextAlign.center),
-                        ),
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(185, 243, 198, 65),
-                            borderRadius: BorderRadius.circular(8)),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.abc,
+                            color: Colors.amberAccent,
+                          ),
+                          Flexible(
+                            child: Container(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(starnote.toString(),
+                                    softWrap: true,
+                                    style: TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 216, 216, 216),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        height: 1.5),
+                                    textDirection: TextDirection.rtl,
+                                    textAlign: TextAlign.center),
+                              ),
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(185, 243, 198, 65),
+                                  borderRadius: BorderRadius.circular(8)),
+                            ),
+                          ),
+                        ],
                       ),
                     )
                   : SizedBox()

@@ -84,6 +84,8 @@ class _ArticlePageState extends State<ArticlePage>
       appBar: AppBar(
         title: Text('هفت روش برای درآمد بیشتر '),
         centerTitle: true,
+        elevation: 0,
+        actions: [Icon(Icons.add_circle)],
         backgroundColor: Color.fromARGB(255, 43, 43, 43),
       ),
       body: Column(
