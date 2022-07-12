@@ -65,7 +65,7 @@ class _ArticlePageState extends State<ArticlePage>
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
-          color: Color.fromARGB(255, 39, 39, 39),
+          color: Color.fromARGB(255, 50, 55, 61),
           child: Container(
             child: Center(
               child: TabPageSelector(
@@ -74,7 +74,7 @@ class _ArticlePageState extends State<ArticlePage>
               ),
             ),
             height: 50,
-            color: Color.fromARGB(255, 39, 39, 39),
+            color: Color.fromARGB(255, 50, 55, 61),
           )),
       backgroundColor: Color.fromARGB(255, 39, 39, 39),
       appBar: AppBar(
@@ -99,6 +99,9 @@ class _ArticlePageState extends State<ArticlePage>
                       image: articleData[index].image,
                       title: articleData[index].title,
                       starnote: articleData[index].starnote,
+                      describtion2: articleData[index].text2,
+                      image2: articleData[index].image2,
+                      starnote2: articleData[index].starnote2,
                     );
                   }),
             ),
