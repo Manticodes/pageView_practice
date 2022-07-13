@@ -60,7 +60,7 @@ class SlidePageWidget extends StatelessWidget {
                     child: Text(
                   title,
                   style: TextStyle(
-                      color: Color.fromARGB(255, 171, 171, 171), fontSize: 25),
+                      color: Color.fromARGB(255, 142, 183, 65), fontSize: 25),
                 )),
               ),
               Padding(
@@ -159,7 +159,7 @@ class SlidePageWidget extends StatelessWidget {
                             child: Container(
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text(starnote.toString(),
+                                child: Text(starnote2.toString(),
                                     softWrap: true,
                                     style: TextStyle(
                                         color:
